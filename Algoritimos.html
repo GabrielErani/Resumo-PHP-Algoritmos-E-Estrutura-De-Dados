@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resumo PHP & Algoritmos E Estrutura De Dados</title>
+    <meta name.viewport content="width=device-width, initial-scale=1.0">
+    <title>Study Guide - Algoritmos e Estruturas de Dados</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
@@ -47,156 +47,220 @@
 </head>
 
 <body>
-    <h1>Resumo PHP & Algoritmos E Estrutura De Dados</h1>
+    <h1>Algoritmos e Estruturas de Dados</h1>
 <div class="button-container">
     <a href="index.html" class="button">Voltar para Resumo PHP</a>
 </div>
     <h2>1. Introdução a Grafos e Árvores</h2>
     <h3>Grafos</h3>
-    <p>Definições e representações de grafos, propriedades principais.</p>
+    <p>Grafos são modelos matemáticos que representam relações entre objetos. Eles consistem em vértices (ou nós)
+        conectados por arestas.</p>
+    <pre><code class="language-c">
+// Representação de um grafo usando matriz de adjacência
+#define V 5
+int graph[V][V] = {
+    {0, 1, 0, 0, 1},
+    {1, 0, 1, 0, 0},
+    {0, 1, 0, 1, 0},
+    {0, 0, 1, 0, 1},
+    {1, 0, 0, 1, 0}
+};
+    </code></pre>
 
     <h3>Árvores</h3>
-    <p>Definições e propriedades das árvores, terminologias usadas.</p>
+    <p>Árvores são grafos acíclicos conectados. Elas possuem um nó raiz e nós filhos que formam uma hierarquia.</p>
+    <pre><code class="language-c">
+// Estrutura de um nó da árvore
+typedef struct No {
+    int valor;
+    struct No* esq;
+    struct No* dir;
+} No;
+    </code></pre>
 
     <h2>2. Introdução à Análise de Complexidade de Algoritmos</h2>
     <h3>Análise de Complexidade</h3>
-    <p>Métodos de avaliação: empírica e analítica. Notações: O, Ω, Θ. Tipos de complexidade: constante, logarítmica,
-        linear, etc.</p>
+    <p>A análise de complexidade avalia o desempenho de algoritmos em termos de tempo de execução e uso de memória. As
+        notações mais comuns são O, Ω e Θ.</p>
+    <pre><code class="language-c">
+// Exemplo de complexidade O(n)
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+}
+    </code></pre>
 
     <h2>3. Estruturas Linearmente Encadeadas</h2>
-    <h3>Funções para Lista Encadeada</h3>
+    <h3>Listas Encadeadas</h3>
+    <p>Listas encadeadas são coleções de nós onde cada nó aponta para o próximo nó da lista.</p>
     <pre><code class="language-c">
-void percorrer_lista(Lista *lista);
-void concatenar_listas(Lista *lista1, Lista *lista2);
-void inverter_lista(Lista *lista);
-int verificar_sublista(Lista *lista1, Lista *lista2);
-    </code></pre>
-
-    <h3>Funções para Pilha</h3>
-    <pre><code class="language-c">
-int buscar_elemento(Pilha *pilha, int elemento);
-void remover_elemento(Pilha *pilha, int elemento);
-void remover_pares(Pilha *pilha);
-void remover_repetidos(Pilha *pilha);
-    </code></pre>
-
-    <h3>Funções para Fila</h3>
-    <pre><code class="language-c">
-void imprimir_fila(Fila *fila);
-int buscar_elemento(Fila *fila, int elemento);
-void editar_elemento(Fila *fila, int elemento);
-void remover_elemento(Fila *fila, int elemento);
-void remover_repetidos(Fila *fila);
-void remover_pares(Fila *fila);
-    </code></pre>
-
-    <h2>4. Pilhas - Implementação e Uso</h2>
-    <h3>Definições e Uso de Pilhas</h3>
-    <p>Implementação de operações básicas: criação, empilhamento, desempilhamento, consulta, destruição.</p>
-    <pre><code class="language-c">
-typedef struct pilha {
-    int topo;
-    int capacidade;
-    int *dados;
-} Pilha;
-
-Pilha* cria_pilha(int capacidade);
-void empilha(Pilha *pilha, int elemento);
-int desempilha(Pilha *pilha);
-int consulta_topo(Pilha *pilha);
-void destroi_pilha(Pilha *pilha);
-    </code></pre>
-
-    <h2>5. Árvores Binárias de Busca - Implementação e Uso</h2>
-    <h3>Definição e Propriedades</h3>
-    <p>Definição e propriedades de árvores binárias de busca. Operações: criação, percurso, inserção, busca, remoção.
-    </p>
-    <pre><code class="language-c">
-typedef struct noArv {
-    int info;
-    struct noArv *esq;
-    struct noArv *dir;
-} ArvBB;
-
-ArvBB* cria_no(int info);
-ArvBB* insere(ArvBB *raiz, int info);
-ArvBB* busca(ArvBB *raiz, int info);
-ArvBB* remove_no(ArvBB *raiz, int info);
-void pre_ordem(ArvBB *raiz);
-void em_ordem(ArvBB *raiz);
-void pos_ordem(ArvBB *raiz);
-    </code></pre>
-
-    <h2>6. Listas Encadeadas I - Estrutura e Implementação</h2>
-    <h3>Definições e Implementações</h3>
-    <p>Definições e implementações de listas encadeadas. Operações básicas: criação, inserção, remoção, busca.</p>
-    <pre><code class="language-c">
-typedef struct nodo {
-    int info;
-    struct nodo *prox;
+// Estrutura de um nó da lista encadeada
+typedef struct Nodo {
+    int valor;
+    struct Nodo* prox;
 } Nodo;
 
-typedef struct {
-    Nodo *inicio;
-    Nodo *fim;
-} Lista;
-
-Lista* cria_lista();
-void insere_inicio(Lista *lista, int info);
-void insere_fim(Lista *lista, int info);
-void remove_inicio(Lista *lista);
-void remove_fim(Lista *lista);
-Nodo* busca_lista(Lista *lista, int info);
+// Função para inserir no início da lista
+void insereInicio(Nodo** head, int valor) {
+    Nodo* novoNodo = (Nodo*)malloc(sizeof(Nodo));
+    novoNodo->valor = valor;
+    novoNodo->prox = *head;
+    *head = novoNodo;
+}
     </code></pre>
 
-    <h2>7. Filas - Implementação e Uso</h2>
-    <h3>Definições e Uso de Filas</h3>
-    <p>Implementação de operações básicas: criação, enfileiramento, desenfileiramento, consulta, destruição.</p>
+    <h3>Pilhas</h3>
+    <p>Pilhas são estruturas LIFO (Last In, First Out) onde o último elemento inserido é o primeiro a ser removido.</p>
     <pre><code class="language-c">
-typedef struct fila {
-    int inicio, fim, capacidade;
-    int *dados;
+// Estrutura de uma pilha
+typedef struct Pilha {
+    int topo;
+    int capacidade;
+    int* array;
+} Pilha;
+
+// Função para criar uma pilha
+Pilha* criaPilha(int capacidade) {
+    Pilha* pilha = (Pilha*)malloc(sizeof(Pilha));
+    pilha->capacidade = capacidade;
+    pilha->topo = -1;
+    pilha->array = (int*)malloc(pilha->capacidade * sizeof(int));
+    return pilha;
+}
+
+// Função para empilhar um elemento
+void empilha(Pilha* pilha, int item) {
+    pilha->array[++pilha->topo] = item;
+}
+    </code></pre>
+
+    <h3>Filas</h3>
+    <p>Filas são estruturas FIFO (First In, First Out) onde o primeiro elemento inserido é o primeiro a ser removido.
+    </p>
+    <pre><code class="language-c">
+// Estrutura de uma fila
+typedef struct Fila {
+    int capacidade;
+    int frente, tras, tamanho;
+    int* array;
 } Fila;
 
-Fila* cria_fila(int capacidade);
-void enfileira(Fila *fila, int elemento);
-int desenfileira(Fila *fila);
-int consulta_frente(Fila *fila);
-void destroi_fila(Fila *fila);
+// Função para criar uma fila
+Fila* criaFila(int capacidade) {
+    Fila* fila = (Fila*)malloc(sizeof(Fila));
+    fila->capacidade = capacidade;
+    fila->frente = fila->tamanho = 0;
+    fila->tras = capacidade - 1;
+    fila->array = (int*)malloc(fila->capacidade * sizeof(int));
+    return fila;
+}
+
+// Função para enfileirar um elemento
+void enfileira(Fila* fila, int item) {
+    fila->tras = (fila->tras + 1) % fila->capacidade;
+    fila->array[fila->tras] = item;
+    fila->tamanho = fila->tamanho + 1;
+}
     </code></pre>
 
-    <h2>8. Árvores AVL</h2>
+    <h2>4. Árvores Binárias de Busca</h2>
     <h3>Definição e Propriedades</h3>
-    <p>Definição e propriedades de árvores AVL. Operações: inserção, rotação, balanceamento.</p>
+    <p>Árvores binárias de busca são árvores binárias onde cada nó tem no máximo dois filhos e o valor do nó da esquerda
+        é menor que o valor do nó pai, que por sua vez é menor que o valor do nó da direita.</p>
     <pre><code class="language-c">
-typedef struct noAVL {
-    int info;
+// Estrutura de um nó da árvore binária de busca
+typedef struct NoArv {
+    int valor;
+    struct NoArv* esq;
+    struct NoArv* dir;
+} NoArv;
+
+// Função para criar um novo nó
+NoArv* novoNo(int valor) {
+    NoArv* temp = (NoArv*)malloc(sizeof(NoArv));
+    temp->valor = valor;
+    temp->esq = temp->dir = NULL;
+    return temp;
+}
+
+// Função para inserir um novo nó
+NoArv* insere(NoArv* no, int valor) {
+    if (no == NULL) return novoNo(valor);
+    if (valor < no->valor)
+        no->esq = insere(no->esq, valor);
+    else if (valor > no->valor)
+        no->dir = insere(no->dir, valor);
+    return no;
+}
+    </code></pre>
+
+    <h2>5. Árvores AVL</h2>
+    <h3>Definição e Propriedades</h3>
+    <p>Árvores AVL são árvores binárias de busca autobalanceadas onde a altura das subárvores esquerda e direita de
+        qualquer nó difere no máximo por um.</p>
+    <pre><code class="language-c">
+// Estrutura de um nó da árvore AVL
+typedef struct NoAVL {
+    int valor;
+    struct NoAVL* esq;
+    struct NoAVL* dir;
     int altura;
-    struct noAVL *esq;
-    struct noAVL *dir;
 } NoAVL;
 
-NoAVL* cria_no(int info);
-int altura_no(NoAVL *no);
-int fator_balanceamento(NoAVL *no);
-NoAVL* rotacao_esquerda(NoAVL *no);
-NoAVL* rotacao_direita(NoAVL *no);
-NoAVL* balanceia_no(NoAVL *no);
-NoAVL* insere_no(NoAVL *raiz, int info);
+// Função para obter a altura de um nó
+int altura(NoAVL* N) {
+    if (N == NULL)
+        return 0;
+    return N->altura;
+}
+
+// Função para realizar uma rotação à direita
+NoAVL* rotacaoDireita(NoAVL* y) {
+    NoAVL* x = y->esq;
+    NoAVL* T2 = x->dir;
+
+    // Executa rotação
+    x->dir = y;
+    y->esq = T2;
+
+    // Atualiza alturas
+    y->altura = max(altura(y->esq), altura(y->dir)) + 1;
+    x->altura = max(altura(x->esq), altura(x->dir)) + 1;
+
+    // Retorna nova raiz
+    return x;
+}
     </code></pre>
 
-    <h2>9. Listas Encadeadas - Exercícios</h2>
+    <h2>6. Listas Encadeadas - Exercícios</h2>
     <h3>Exercícios de Implementação</h3>
     <p>Implementação de funções para operações em listas encadeadas: menor, maior, média, número de elementos,
         concatenação, inversão, sublista.</p>
     <pre><code class="language-c">
-int menor_elemento(Lista *lista);
-int maior_elemento(Lista *lista);
-float media_elementos(Lista *lista);
-int numero_elementos(Lista *lista);
-void concatena_listas(Lista *lista1, Lista *lista2);
-void inverte_lista(Lista *lista);
-int verifica_sublista(Lista *lista1, Lista *lista2);
+// Função para encontrar o menor elemento
+int menorElemento(Nodo* head) {
+    int min = head->valor;
+    Nodo* temp = head;
+    while (temp != NULL) {
+        if (temp->valor < min)
+            min = temp->valor;
+        temp = temp->prox;
+    }
+    return min;
+}
+
+// Função para encontrar o maior elemento
+int maiorElemento(Nodo* head) {
+    int max = head->valor;
+    Nodo* temp = head;
+    while (temp != NULL) {
+        if (temp->valor > max)
+            max = temp->valor;
+        temp = temp->prox;
+    }
+    return max;
+}
     </code></pre>
 
 </body>
